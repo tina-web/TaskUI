@@ -1,0 +1,10 @@
+:host {
+    display: flex;
+    justify-content: center;
+}
+
+.task-list-page-container {
+    flex-basis: 500px;
+    display: flex;
+    flex-direction: column;
+}

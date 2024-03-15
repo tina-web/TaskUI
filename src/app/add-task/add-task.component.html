@@ -1,0 +1,8 @@
+<div class="new-task-container">
+  <mat-form-field>
+    <input placeholder="Enter a new task" [formControl]="taskTitle" matInput />
+    <button mat-icon-button (click)="emitAddTask()" matSuffix>
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-form-field>
+</div>

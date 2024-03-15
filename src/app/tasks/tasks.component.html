@@ -1,0 +1,8 @@
+<mat-list>
+  <mat-list-item *ngFor="let task of tasks">
+    <span matListItemTitle>
+      {{ task.title }}
+    </span>
+    <mat-checkbox [checked]="task.isCompleted" (change)="handleCheckboxChange(task, $event)" matListItemMeta></mat-checkbox>
+  </mat-list-item>
+</mat-list>

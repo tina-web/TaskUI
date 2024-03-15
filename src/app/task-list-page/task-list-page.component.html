@@ -1,0 +1,4 @@
+<div class="task-list-page-container">
+  <app-tasks [tasks]="taskList$"></app-tasks>
+  <app-add-task (addTask)="handleAddTask($event)"></app-add-task>
+</div>
