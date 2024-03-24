@@ -8,8 +8,8 @@ export class TaskRepositoryService {
   #localStorageKey = 'TASKS';
 
   getTasks(): Task[] {
-    const tasksString: string = localStorage.getItem(this.#localStorageKey);
-    return JSON.parse(tasksString) as Task[];
+    const tasksString: string | null = localStorage.getItem(this.#localStorageKey);
+    return tasksString !== null ? JSON.parse(tasksString) as Task[] : [];
   }
 
   saveTasks(tasks: Task[]): void {

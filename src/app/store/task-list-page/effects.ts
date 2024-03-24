@@ -28,7 +28,7 @@ export class TaskListPageEffects {
       tap(([{}, tasks]) => {
         this.taskRepositoryService.saveTasks(tasks);
       })
-    )
+    ),{dispatch:false}
   );
 
   constructor(

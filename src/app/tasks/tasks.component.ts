@@ -1,11 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
-
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatListModule } from '@angular/material/list';
+
 import { Store } from '@ngrx/store';
+import * as TaskListPageActions from '../store/task-list-page/actions';
+import * as TaskDetailsPageActions from '../store/task-detail-page/actions';
+
+import { MatListModule } from '@angular/material/list';
+import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { Task } from '../interfaces/models';
-import { updateTask } from '../store/task-list-page/actions';
 
 @Component({
   selector: 'app-tasks',
@@ -16,11 +19,15 @@ import { updateTask } from '../store/task-list-page/actions';
 })
 export class TasksComponent {
   @Input() tasks: Task[] | null = [];
-
-  constructor(private store: Store) {}
+  constructor(private store: Store, private router: Router) { }
 
   handleCheckboxChange(task: Task, event: MatCheckboxChange): void {
     const updatedTask: Task = { ...task, isCompleted: event.checked };
-    this.store.dispatch(updateTask({ id: task.id, task: updatedTask }));
+    this.store.dispatch(TaskListPageActions.updateTask({ id: task.id, task: updatedTask }));
+  }
+
+  openTask(task: Task) {
+    this.store.dispatch(TaskDetailsPageActions.setTask({ task }))
+    this.router.navigateByUrl(`task/${task.id}`)
   }
 }

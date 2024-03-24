@@ -1,6 +1,6 @@
 <mat-list>
   <mat-list-item *ngFor="let task of tasks">
-    <span matListItemTitle>
+    <span matListItemTitle (click)="openTask(task)">
       {{ task.title }}
     </span>
     <mat-checkbox [checked]="task.isCompleted" (change)="handleCheckboxChange(task, $event)" matListItemMeta></mat-checkbox>

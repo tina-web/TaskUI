@@ -19,11 +19,11 @@ import { TasksComponent } from '../tasks/tasks.component';
 export class TaskListPageComponent {
   taskList$: Observable<Task[]>;
 
-  constructor(store: Store<RootState>) {
-    this.taskList$ = this.store.select(rootState => rootState.taskListPage.tasks);
+  constructor(private store: Store<RootState>) {
+    this.taskList$ = store.select(rootState => rootState.taskListPage.tasks);
   }
 
   handleAddTask(task: Task): void {
-    this.store.dispatch(TaskListPageActions.addTask(task));
+    this.store.dispatch(TaskListPageActions.addTask({task}));
   }
 }
